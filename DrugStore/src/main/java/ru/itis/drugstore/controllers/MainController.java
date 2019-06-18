@@ -1,4 +1,4 @@
-package ru.itis.drugstore;
+package ru.itis.drugstore.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
