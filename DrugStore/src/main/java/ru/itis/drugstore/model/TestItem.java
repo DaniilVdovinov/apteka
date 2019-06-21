@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Item {
+public class TestItem {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;

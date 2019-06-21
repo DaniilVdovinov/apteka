@@ -1,7 +1,7 @@
 package ru.itis.drugstore.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.itis.drugstore.model.Item;
+import ru.itis.drugstore.model.TestItem;
 
-public interface ItemRepo extends CrudRepository<Item, Long> {
+public interface ItemRepo extends CrudRepository<TestItem, Long> {
 }
