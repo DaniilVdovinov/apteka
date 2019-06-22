@@ -1,8 +1,12 @@
 package ru.itis.drugstore.parsers;
 
+import org.springframework.stereotype.Component;
+import ru.itis.drugstore.models.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MainParser implements Parser {
 
     public List<Item> getItemsListByRequest(String request) {
