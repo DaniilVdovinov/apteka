@@ -7,33 +7,10 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/home">
         <img src="/docs/4.3.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Название
+        drug.ru
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">Link</a>-->
-<!--            </li>-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Город
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Казань</a>
-                    <a class="dropdown-item" href="#">Ульяновск</a>
-                </div>
-            </li>
-        </ul>
-    </div>
 </nav>
 
     <div class="jumbotron jumbotron-fluid" style="background-color: #e3f2fd !important;margin: 20px">
@@ -46,10 +23,22 @@
         </div>
     </div>
 
-
+<#if error??>
+    <h4>Введите название лекарства и нажмите "Поиск"</h4>
+</#if>
 <div class="container">
+    <#if items??>
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            Цена по
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="/sort/sort">По возрастанию</a>
+            <a class="dropdown-item" href="/sort/reverse">По убыванию</a>
+        </div>
+    </div>
     <table>
-        <#if items??>
     <#list items as item>
         <div class="product-item">
             <div class="row" style="margin: 0 0 20px 0;">
