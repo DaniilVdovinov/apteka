@@ -11,9 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 //@Entity
 public class Item implements Comparable<Item>{
-//    @Id
-//    @GeneratedValue(strategy= GenerationType.AUTO)
-//    private Integer id;
 
     private String name;
     private String price;
@@ -22,17 +19,11 @@ public class Item implements Comparable<Item>{
 
     @Override
     public int compareTo(Item u) {
-        if (getPrice() == null || u.getPrice() == null) {
-            return 0;
-        }
-        return getPrice().compareTo(u.getPrice());
+        if(Double.parseDouble(getPrice())<Double.parseDouble(u.getPrice()))
+            return -1;
+        else if(Double.parseDouble(u.getPrice())<Double.parseDouble(getPrice()))
+            return 1;
+        return 0;
     }
 
-
-//    @ManyToMany
-//    @JoinTable(
-//            name="item_pharmacy",
-//            joinColumns=@JoinColumn(name="item_id", referencedColumnName="id"),
-//            inverseJoinColumns=@JoinColumn(name="pharmacy_id", referencedColumnName="id"))
-//    private List<Pharmacy> pharmacies;
   }
