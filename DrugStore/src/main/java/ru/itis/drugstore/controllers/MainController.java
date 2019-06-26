@@ -29,15 +29,6 @@ public class MainController {
     public String getItems(ModelMap model, @RequestParam String name, HttpServletRequest request) {
         if (name != null && !name.isEmpty()) {
             List<Item> items = mainParser.getItemsListByRequest(name);
-            String pattern = "(.*),(.*)";
-            for (Item item : items) {
-                if (item.getPrice().matches(pattern)) {
-                    char[] ch = item.getPrice().toCharArray();
-                    for (int i = 0; i < ch.length; i++)
-                        if (ch[i] == ',') ch[i] = '.';
-                    item.setPrice(String.valueOf(ch));
-                }
-            }
             request.getSession().setAttribute("items", items);
             model.addAttribute("items", items);
         } else {
@@ -49,8 +40,12 @@ public class MainController {
     @GetMapping("/sort/{sort}")
     public String sort(ModelMap model, @PathVariable String sort, HttpServletRequest request) {
         List<Item> items = (List<Item>) request.getSession().getAttribute("items");
-        if (sort.equals("sort")) Collections.sort(items);
-        if (sort.equals("reverse")) Collections.reverse(items);
+        if (sort.equals("sort")) {
+            Collections.sort(items);
+        }
+        if (sort.equals("reverse")) {
+            Collections.sort(items, Collections.reverseOrder());
+        }
 //        HttpSession session = request.getSession(false);
 //        if (session != null) {
 //            session.invalidate();

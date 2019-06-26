@@ -13,17 +13,23 @@ import lombok.NoArgsConstructor;
 public class Item implements Comparable<Item>{
 
     private String name;
-    private String price;
+    private Double price;
     private String href;
     private String img;
 
+
+    public Double getPrice() {
+        return price;
+    }
+
     @Override
     public int compareTo(Item u) {
-        if(Double.parseDouble(getPrice())<Double.parseDouble(u.getPrice()))
-            return -1;
-        else if(Double.parseDouble(u.getPrice())<Double.parseDouble(getPrice()))
+        if(this.price > u.getPrice()){
             return 1;
-        return 0;
+        }
+        else {
+            return -1;
+        }
     }
 
   }

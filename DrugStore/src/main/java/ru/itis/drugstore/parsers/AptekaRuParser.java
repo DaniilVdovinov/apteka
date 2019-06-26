@@ -38,7 +38,7 @@ public class AptekaRuParser implements Parser {
             String href = "https://apteka.ru" + element.getElementsByTag("a").get(0).attr("href");
             String img = "https://apteka.ru" + element.getElementsByTag("img").get(0).attr("src");
 
-            Item item = new Item(name.toUpperCase(), price, href, img);
+            Item item = new Item(name.toUpperCase(), Double.parseDouble(price), href, img);
             list.add(item);
         }
 

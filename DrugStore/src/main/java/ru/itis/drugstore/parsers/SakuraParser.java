@@ -32,7 +32,7 @@ public class SakuraParser implements Parser{
             String href = "http://sakura.ru" + element.getElementsByClass("name").get(0).attr("href");
             String img = "http://sakura.ru" + element.getElementsByTag("img").attr("src");
 
-            Item item = new Item(name.toUpperCase(), Integer.parseInt(price.replaceAll("[\\D]", "")) + "", href, img);
+            Item item = new Item(name.toUpperCase(), Double.parseDouble(price.replaceAll("[\\D]", "")), href, img);
             list.add(item);
         }
 
