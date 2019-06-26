@@ -46,11 +46,6 @@ public class MainController {
         if (sort.equals("reverse")) {
             Collections.sort(items, Collections.reverseOrder());
         }
-//        HttpSession session = request.getSession(false);
-//        if (session != null) {
-//            session.invalidate();
-//        }
-
         return "home";
     }
 }

@@ -14,46 +14,14 @@
              alt="">
         drug.ru
     </a>
-    <form action="/user/profile" method="get">
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <input type="submit" value="Профиль"/>
-    </form>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <input type="submit" value="Sign Out"/>
     </form>
 </nav>
 
-<div class="jumbotron jumbotron-fluid" style="background-color: #e3f2fd !important;margin: 20px">
-    <div class="container" style="margin: 30px">
-        <h3 class="text-center">Поиск лекарств</h3>
-        <form action="/search" method="get">
-            <input id="name" name="name" type="text" class="form-control" placeholder="Введите название">
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="Поиск">
-        </form>
-    </div>
-</div>
-
-<#if error??>
-    <h4>Введите название лекарства и нажмите "Поиск"</h4>
-</#if>
 <div class="container">
     <#if items??>
-
-    <div class="text-right">
-        <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Цена по
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="/sort/sort">По возрастанию</a>
-                <a class="dropdown-item" href="/sort/reverse">По убыванию</a>
-            </div>
-        </div>
-    </div>
     <table>
         <#list items as item>
             <div class="product-item">
@@ -72,10 +40,6 @@
         </#if>
     </table>
 </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

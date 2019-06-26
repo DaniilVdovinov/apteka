@@ -1,15 +1,13 @@
 package ru.itis.drugstore.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@ToString
+@EqualsAndHashCode
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@Entity
 public class Item implements Comparable<Item>{
 
     private String name;
@@ -17,6 +15,17 @@ public class Item implements Comparable<Item>{
     private String href;
     private String img;
 
+    public String getName(){
+        return name;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public String getImg(){
+        return img;
+    }
 
     public Double getPrice() {
         return price;
@@ -32,4 +41,4 @@ public class Item implements Comparable<Item>{
         }
     }
 
-  }
+}
