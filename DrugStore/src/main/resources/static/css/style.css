@@ -8,9 +8,11 @@
 }
 .login-out {
     float: right;
+    margin-top: 55px;
+    margin-right: 70px;
 }
 
-.btn-search {
+.btn-search  {
     float: left ;
     display: inline !important;
     font-weight: 400;
@@ -79,22 +81,20 @@
     border-radius: 10px;
 }
 .container {
-    float: left;
+    float: left !important;
 }
 .product-item {
     float: left !important;
     vertical-align: middle !important;
-    height: auto;
-    width: 700px;
-    margin-bottom: 5px;
-    margin-left: 6px;
+    height: auto !important;
+    width: 700px !important;
 }
 .col-3 {
     text-align: center !important;
 }
 #img {
-    width: 100px;
-    height: 100px;
+    width: 100px !important;
+    height: 100px !important;
     text-align: center !important;
 }
 .topbutton {

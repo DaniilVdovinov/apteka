@@ -14,10 +14,18 @@
 
 </head>
 
+<script>
+    function show(id) {
+        elem = document.getElementById(id);
+        state = elem.style.display;
+        if (state === 'none') elem.style.display = '';
+    }
+</script>
+
 <body onscroll="show('btn-up')">
 <nav class="navigation">
     <img class="nav-img" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
-    <div class="login-out" style="right: 70px !important; top: 50px !important;">
+    <div class="login-out">
         <form action="/logout" method="post" style="display: inline; float: right; padding-left: 3px">
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <button class="form-button" type="submit">Sign Out</button>
@@ -30,9 +38,9 @@
 </nav>
 
 <div class="searching-form">
+    <div id="map"></div>
     <div class="search-container">
         <#if items??>
-            <div id="map"></div>
         </#if>
         <form action="/search" method="get">
             <input id="name" name="name" type="text" class="form-control" placeholder="Введите название лекарства...">
@@ -58,11 +66,11 @@
 <a href="#" id="btn-up" title="Вернуться к началу" class="topbutton" style="display: none;">Наверх</a>
 
 <#if error??>
-    <h4 style="margin-left: 20px; margin-bottom: 10px">Введите название лекарства и нажмите "Поиск"</h4>
+    <h4 style="margin-left: 70px; margin-bottom: 40px; margin-top: 40px">Введите название лекарства и нажмите "Поиск"</h4>
 </#if>
 <div class="container">
     <#if items??>
-        <table>
+        <table class="product-item">
             <#list items as item>
             <div class="product-item">
                 <div class="row">
@@ -75,10 +83,9 @@
                         <p><a href="${item.href}"> В аптеку</a></p>
                     </div>
                     <div class="col-2">
-                        <input type="submit" aria-label="Favorite" id="${item.href}" onclick="sender(${item.href})">
-                        <span class="mdc-fab__icon material-icons">favorite</span>
+                        <button class="mdc-fab" aria-label="Favorite" onclick="submitForm()">
                             <span class="mdc-fab__icon material-icons">favorite</span>
-                        </input>
+                        </button>
                     </div>
                     <hr width="700" color="#000000" size="1">
                 </div>
@@ -86,11 +93,13 @@
         </table>
     </#if>
 </div>
+
 <style>
     .form-button {
         background-color: #c64d43 !important;
-        width: 100px !important;
-        height: 35px !important;
+        width: 120px !important;
+        height: 45px !important;
+        border: 3px solid #c64d43;
         border-radius: 5px;
         color: white;
     }
@@ -123,6 +132,7 @@
     .btn-search:focus {
         box-shadow: 0 0 0 .2rem rgba(168, 216, 255, .5);
     }
+
     .search-container {
         vertical-align: center;
         margin: 30px;
@@ -146,45 +156,18 @@
     }
 </style>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-
-<#--<script>-->
-<#--    function submitForm() {-->
-<#--        var href = jQuery("#href").val();-->
-<#--        var img = jQuery("#img").val();-->
-<#--        var name = jQuery("#name").val();-->
-<#--        var price = jQuery("#price").val();-->
-
-
-<#--        jQuery.ajax("/profile/" + href + "/"+ img + "/"+ name + "/"+ price + "/",-->
-<#--            {-->
-<#--                type:"GET"-->
-<#--            });-->
-<#--    }-->
-<script>
-    function sender(href) {
-        console.log(href);
-        $.ajax({
-            type: 'post',
-            url: '/search',
-            data: {
-                href: href
-            },
-            success: alert("Успешно добавлено")
-        })
-    }
-
-
-    function show(id) {
-        elem = document.getElementById(id);
-        state = elem.style.display;
-        if (state === 'none') elem.style.display = '';
-    }
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
