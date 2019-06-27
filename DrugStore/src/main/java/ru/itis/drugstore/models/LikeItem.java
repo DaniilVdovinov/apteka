@@ -3,9 +3,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@ToString
-@EqualsAndHashCode
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -18,7 +16,7 @@ public class LikeItem implements Comparable<LikeItem>{
     private Long id;
 
     private String name;
-    private String price;
+    private Double price;
     private String href;
     private String img;
 
@@ -26,33 +24,14 @@ public class LikeItem implements Comparable<LikeItem>{
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public String getHref() {
-        return href;
-    }
-
-    public String getImg(){
-        return img;
-    }
-
-    public String getPrice() {
-        return price != null ? price : "0";
-    }
-
     @Override
     public int compareTo(LikeItem u) {
-        if(Double.parseDouble(getPrice())<Double.parseDouble(u.getPrice()))
-            return -1;
-        else if(Double.parseDouble(u.getPrice())<Double.parseDouble(getPrice()))
+        if(this.price > u.getPrice()){
             return 1;
-        return 0;
+        }
+        else {
+            return -1;
+        }
     }
 
 }

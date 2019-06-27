@@ -7,6 +7,7 @@ import ru.itis.drugstore.models.User;
 import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {
+
     private User user;
 
     public UserDetailsImpl(User user) {

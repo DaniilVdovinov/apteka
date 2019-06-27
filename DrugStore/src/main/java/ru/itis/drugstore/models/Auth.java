@@ -1,16 +1,22 @@
-package ru.itis.drugstore.models;
-
-import lombok.*;
-
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class Auth {
-    private Long id;
-    private String cookieValue;
-    private User user;
-}
+//package ru.itis.drugstore.models;
+//
+//import lombok.*;
+//
+//import javax.persistence.*;
+//
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Builder
+//@Entity
+//@Table(name = "auth")
+//public class Auth {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
+//    private Long id;
+//    @Column(name = "cookie_value")
+//    private String cookieValue;
+//    @Column(name = "user_id")
+//    private Long userId;
+//}
