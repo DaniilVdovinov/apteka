@@ -55,13 +55,13 @@
 <nav class="navigation">
     <img class="nav-img" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
     <div class="login-out">
-        <form action="/user/profile" method="get" style="display: inline; float: right; padding-right: 3px">
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <input type="submit" value="Профиль"/>
-        </form>
         <form action="/logout" method="post" style="display: inline; float: right; padding-left: 3px">
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <input type="submit" value="Sign Out"/>
+        </form>
+        <form action="/profile" method="get" style="display: inline; float: right; padding-right: 3px">
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <input type="submit" value="Профиль"/>
         </form>
     </div>
 </nav>
@@ -111,6 +111,10 @@
                             <span class="price1">Стоимость: ${item.price} руб.</span>
                             <p><a href="${item.href}"> В аптеку</a></p>
                         </div>
+                        <div class="col-2">
+                            <button class="mdc-fab" aria-label="Favorite" onclick="submitForm()">
+                                <span class="mdc-fab__icon material-icons">favorite</span>
+                            </button>
                     </div>
                     <hr width="700" color="#000000" size="1">
                 </div>
