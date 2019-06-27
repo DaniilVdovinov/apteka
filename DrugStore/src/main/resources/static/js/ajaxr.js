@@ -7,9 +7,8 @@ $(function submitForm() {
 
     var object = {href:href,img:img,name:name,price:price};
 
-    jQuery.ajax("/profile/add",
+    jQuery.ajax("/profile/add"+ JSON.stringify(object),
         {
-            type:"POST",
-            data: object
+            type:"POST"
         });
 });

@@ -29,7 +29,7 @@ public class AuthController {
     @GetMapping("/login")
     public String getSignInPage(HttpServletRequest request, ModelMap model) {
         if (request.getParameterMap().containsKey("error")) {
-            model.addAttribute("error", "error");
+            model.addAttribute("error", "Некорректные данные");
         }
         return "login";
     }
