@@ -155,7 +155,7 @@
         transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
     }
 </style>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
@@ -168,6 +168,39 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<#--<script>-->
+<#--    function submitForm() {-->
+<#--        var href = jQuery("#href").val();-->
+<#--        var img = jQuery("#img").val();-->
+<#--        var name = jQuery("#name").val();-->
+<#--        var price = jQuery("#price").val();-->
+
+
+<#--        jQuery.ajax("/profile/" + href + "/"+ img + "/"+ name + "/"+ price + "/",-->
+<#--            {-->
+<#--                type:"GET"-->
+<#--            });-->
+<#--    }-->
+<script>
+    function sender(href) {
+        console.log(href);
+        $.ajax({
+            type: 'post',
+            url: '/search',
+            data: {
+                href: href
+            },
+            success: alert("Успешно добавлено")
+        })
+    }
+
+
+    function show(id) {
+        elem = document.getElementById(id);
+        state = elem.style.display;
+        if (state === 'none') elem.style.display = '';
+    }
+</script>
 
 </body>
 </html>
