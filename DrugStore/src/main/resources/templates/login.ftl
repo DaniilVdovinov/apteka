@@ -14,6 +14,9 @@
     </#if>
 </div>
 <form method="post" class="form-signin">
+    <a href="/home">
+        <img class="nav-img" style="width: 100%" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
+    </a>
     <h1 class="h1_project" style="color: #d5423b; text-align: center; margin: 25px;">
         ВХОД
     </h1>
@@ -29,8 +32,13 @@
     <div style="text-align:center;">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button class="form_button" style="color: white">ВОЙТИ</button>
-    </div>
 </form>
+<form action="/registration" method="get" class="form-signin">
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <button class="form_button" style="color: white">РЕГИСТРАЦИЯ</button>
+</form>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

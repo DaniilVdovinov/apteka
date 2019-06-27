@@ -57,6 +57,7 @@ body {
     width: 340px !important;
     height: 50px !important;
     border: none !important;
+    border-radius: 10px;
 }
 
 input .form_button.-block {

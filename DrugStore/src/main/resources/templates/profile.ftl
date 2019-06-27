@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="/home">
-        <img src="/docs/4.3.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
-             alt="">
-        drug.ru
+<nav class="navigation" style="background-color: #ffffff;">
+    <a href="/home">
+        <img class="nav-img" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
     </a>
+    <div class="login-out">
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <input type="submit" value="Sign Out"/>
     </form>
+    </div>
 </nav>
 
 <h5>${firstName} ${lastName}</h5>
