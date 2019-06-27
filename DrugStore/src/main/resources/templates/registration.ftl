@@ -14,7 +14,11 @@
         Пользователь с такими данными уже существует!
     </#if>
 </div>
+
 <form action="/registration" method="post" class="form-signin">
+    <a href="/home">
+        <img class="nav-img" style="width: 100%" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
+    </a>
     <h1 class="h1_project" style="color: #d5423b; text-align: center; margin: 25px;">
         РЕГИСТРАЦИЯ
     </h1>
