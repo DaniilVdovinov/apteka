@@ -6,13 +6,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="map/AptekaRu.js" type="text/javascript"></script>
+    <script src="map/Rigla.js" type="text/javascript"></script>
+    <script src="map/Sakura.js" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f2063206-fe46-4935-9921-9abf9987ebec&lang=ru_RU" type="text/javascript"></script>
+    <script src="map/Map.js" type="text/javascript"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <img style="width:100%" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
     <a class="navbar-brand" href="/home">
-        <img src="/docs/4.3.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
-             alt="">
-        drug.ru
+<#--        <img src="/docs/4.3.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"-->
+<#--             alt="">-->
     </a>
     <form action="/user/profile" method="get">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
@@ -23,6 +29,8 @@
         <input type="submit" value="Sign Out"/>
     </form>
 </nav>
+
+<div id="map" style="width: 600px; height: 400px"></div>
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #e3f2fd !important;margin: 20px">
     <div class="container" style="margin: 30px">
