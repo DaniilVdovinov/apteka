@@ -76,6 +76,7 @@
                     </div>
                     <div class="col-2">
                         <input type="submit" aria-label="Favorite" id="${item.href}" onclick="sender(${item.href})">
+                        <span class="mdc-fab__icon material-icons">favorite</span>
                             <span class="mdc-fab__icon material-icons">favorite</span>
                         </input>
                     </div>
@@ -176,6 +177,7 @@
             success: alert("Успешно добавлено")
         })
     }
+
 
     function show(id) {
         elem = document.getElementById(id);

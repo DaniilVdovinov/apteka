@@ -7,6 +7,15 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
+<#--<script>-->
+<#--    function show(id) {-->
+<#--        elem = document.getElementById(id);-->
+<#--        state = elem.style.display;-->
+<#--        if (state === 'none') elem.style.display = '';-->
+<#--    }-->
+<#--</script>-->
+
 <body>
 <nav class="navigation" style="background-color: #ffffff;">
     <a href="/home">
@@ -19,6 +28,8 @@
         </form>
     </div>
 </nav>
+
+<#--<a href="#" id="btn-up" title="Вернуться к началу" class="topbutton" style="display: none;">Наверх</a>-->
 
 <h5>${firstName} ${lastName}</h5>
 
