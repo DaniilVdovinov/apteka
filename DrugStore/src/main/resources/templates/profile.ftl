@@ -20,7 +20,7 @@
     </form>
 </nav>
 
-<h5>${username}</h5>
+<h5>${firstName} ${lastName}</h5>
 
 <div class="container">
     <#if items??>

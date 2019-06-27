@@ -28,7 +28,8 @@ public class UserService{
         User user = User.builder()
                 .password(passwordEncoder.encode(form.getPassword()))
                 .email(form.getEmail())
-                .username(form.getUsername())
+                .firstName(form.getFirstName())
+                .lastName(form.getLastName())
                 .state(UserState.NOT_CONFIRMED)
                 .confirmString(confirmString)
                 .build();

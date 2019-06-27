@@ -19,11 +19,6 @@ import ru.itis.drugstore.services.UserService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
     @Autowired
     @Qualifier("customUserDetailsService")
