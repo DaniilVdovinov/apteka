@@ -15,7 +15,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <img style="width:100%" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
+    <img style="width:30%" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
     <a class="navbar-brand" href="/home">
 <#--        <img src="/docs/4.3.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"-->
 <#--             alt="">-->
@@ -30,7 +30,7 @@
     </form>
 </nav>
 
-<div id="map" style="width: 600px; height: 400px"></div>
+<#--<div id="map" style="width: 600px; height: 400px"></div>-->
 
 <div class="jumbotron jumbotron-fluid" style="background-color: #e3f2fd !important;margin: 20px">
     <div class="container" style="margin: 30px">
