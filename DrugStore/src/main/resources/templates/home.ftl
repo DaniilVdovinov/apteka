@@ -14,14 +14,6 @@
 
 </head>
 
-<script>
-    function show(id) {
-        elem = document.getElementById(id);
-        state = elem.style.display;
-        if (state === 'none') elem.style.display = '';
-    }
-</script>
-
 <body onscroll="show('btn-up')">
 <nav class="navigation">
     <img class="nav-img" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
@@ -72,24 +64,24 @@
     <#if items??>
         <table>
             <#list items as item>
-                <div class="product-item">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="${item.img}" id="img">
-                        </div>
-                        <div class="col-9">
-                            <h3>${item.name}</h3>
-                            <span class="price1">Стоимость: ${item.price} руб.</span>
-                            <p><a href="${item.href}"> В аптеку</a></p>
-                        </div>
-                        <div class="col-2">
-                            <button class="mdc-fab" aria-label="Favorite" onclick="submitForm()">
-                                <span class="mdc-fab__icon material-icons">favorite</span>
-                            </button>
+            <div class="product-item">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="${item.img}" id="img">
+                    </div>
+                    <div class="col-9">
+                        <h3>${item.name}</h3>
+                        <span class="price1">Стоимость: ${item.price} руб.</span>
+                        <p><a href="${item.href}"> В аптеку</a></p>
+                    </div>
+                    <div class="col-2">
+                        <input type="submit" aria-label="Favorite" id="${item.href}" onclick="sender(${item.href})">
+                            <span class="mdc-fab__icon material-icons">favorite</span>
+                        </input>
                     </div>
                     <hr width="700" color="#000000" size="1">
                 </div>
-            </#list>
+                </#list>
         </table>
     </#if>
 </div>
@@ -130,7 +122,6 @@
     .btn-search:focus {
         box-shadow: 0 0 0 .2rem rgba(168, 216, 255, .5);
     }
-
     .search-container {
         vertical-align: center;
         margin: 30px;
@@ -153,17 +144,45 @@
         transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
     }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+
+<#--<script>-->
+<#--    function submitForm() {-->
+<#--        var href = jQuery("#href").val();-->
+<#--        var img = jQuery("#img").val();-->
+<#--        var name = jQuery("#name").val();-->
+<#--        var price = jQuery("#price").val();-->
+
+
+<#--        jQuery.ajax("/profile/" + href + "/"+ img + "/"+ name + "/"+ price + "/",-->
+<#--            {-->
+<#--                type:"GET"-->
+<#--            });-->
+<#--    }-->
+<script>
+    function sender(href) {
+        console.log(href);
+        $.ajax({
+            type: 'post',
+            url: '/search',
+            data: {
+                href: href
+            },
+            success: alert("Успешно добавлено")
+        })
+    }
+
+    function show(id) {
+        elem = document.getElementById(id);
+        state = elem.style.display;
+        if (state === 'none') elem.style.display = '';
+    }
+</script>
+
 </body>
 </html>

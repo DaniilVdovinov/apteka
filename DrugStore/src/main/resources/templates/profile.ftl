@@ -13,10 +13,10 @@
         <img class="nav-img" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
     </a>
     <div class="login-out">
-    <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <input type="submit" value="Sign Out"/>
-    </form>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
+            <input type="submit" value="Sign Out"/>
+        </form>
     </div>
 </nav>
 

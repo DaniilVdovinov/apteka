@@ -37,6 +37,11 @@ public class MainController {
         return "home";
     }
 
+    @PostMapping("/search")
+    public void addItem(@RequestParam("href") String href){
+        System.out.println(href);
+    }
+
     @GetMapping("/sort/{sort}")
     public String sort(ModelMap model, @PathVariable String sort, HttpServletRequest request) {
         List<Item> items = (List<Item>) request.getSession().getAttribute("items");
