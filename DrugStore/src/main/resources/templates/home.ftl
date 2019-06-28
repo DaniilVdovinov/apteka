@@ -76,7 +76,7 @@
                         <p><a href="${item.href}"> В аптеку</a></p>
                     </div>
                     <div class="col-2">
-                        <input type="submit" aria-label="Favorite" id="${item.href}" name="${item.href}" onclick="sendHref(${item.href})">
+                        <input type="submit" aria-label="Favorite" id="${item.href}" name="${item.href}" onclick="sendHref(${item.href})" value="В избранное">
                     </div>
                     <hr width="700" color="#000000" size="1">
                 </div>
