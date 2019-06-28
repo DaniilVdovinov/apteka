@@ -5,9 +5,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class EmailServicesImpl implements EmailService{
     @Autowired
     private JavaMailSender javaMailSender;

@@ -7,15 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import ru.itis.drugstore.models.Item;
 import ru.itis.drugstore.parsers.MainParser;
 
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.List;
 
 @Controller
 public class MainController {
-
 
     @Autowired
     private MainParser mainParser;
@@ -37,8 +34,12 @@ public class MainController {
         return "home";
     }
 
-    @PostMapping("/search")
-    public void addItem(@RequestParam("href") String href){
+    //    @GetMapping("/search/add")
+//    public @ResponseBody void addItem(@RequestBody Item item){
+//        System.out.println(item.getPrice());
+//    }
+    @GetMapping("/add")
+    public void addItem(@RequestParam(name = "href") String href) {
         System.out.println(href);
     }
 

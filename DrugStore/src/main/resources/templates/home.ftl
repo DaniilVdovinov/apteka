@@ -6,17 +6,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=f2063206-fe46-4935-9921-9abf9987ebec&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f2063206-fe46-4935-9921-9abf9987ebec&lang=ru_RU"
+            type="text/javascript"></script>
     <script src="../static/js/map/Map.js"></script>
     <script src="../static/js/map/AptekaRu.js"></script>
     <script src="../static/js/map/Rigla.js"></script>
     <script src="../static/js/map/Sakura.js"></script>
-
 </head>
-
 <body onscroll="show('btn-up')">
 <nav class="navigation">
-    <img class="nav-img" src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png' alt='Logo.png' />
+    <img class="nav-img"
+         src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png'
+         alt='Logo.png'/>
     <div class="login-out" style="right: 70px !important; top: 50px !important;">
         <form action="/logout" method="post" style="display: inline; float: right; padding-left: 3px">
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -75,9 +76,7 @@
                         <p><a href="${item.href}"> В аптеку</a></p>
                     </div>
                     <div class="col-2">
-                        <input type="submit" aria-label="Favorite" id="${item.href}" onclick="sender(${item.href})">
-                            <span class="mdc-fab__icon material-icons">favorite</span>
-                        </input>
+                        <input type="submit" aria-label="Favorite" id="${item.href}" name="${item.href}" onclick="sendHref(${item.href})">
                     </div>
                     <hr width="700" color="#000000" size="1">
                 </div>
@@ -93,8 +92,9 @@
         border-radius: 5px;
         color: white;
     }
+
     .btn-search {
-        float: left ;
+        float: left;
         display: inline !important;
         font-weight: 400;
         margin-left: 6px !important;
@@ -114,19 +114,23 @@
         border-radius: .25rem;
         transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
     }
+
     .btn-search:hover {
         color: #000000;
         background-color: rgba(168, 216, 255, .5);
         border-color: #87CEEB;
     }
+
     .btn-search:focus {
         box-shadow: 0 0 0 .2rem rgba(168, 216, 255, .5);
     }
+
     .search-container {
         vertical-align: center;
         margin: 30px;
         display: inline-block;
     }
+
     .form-control {
         display: inline;
         float: left;
@@ -145,35 +149,27 @@
     }
 </style>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-
-<#--<script>-->
-<#--    function submitForm() {-->
-<#--        var href = jQuery("#href").val();-->
-<#--        var img = jQuery("#img").val();-->
-<#--        var name = jQuery("#name").val();-->
-<#--        var price = jQuery("#price").val();-->
-
-
-<#--        jQuery.ajax("/profile/" + href + "/"+ img + "/"+ name + "/"+ price + "/",-->
-<#--            {-->
-<#--                type:"GET"-->
-<#--            });-->
-<#--    }-->
 <script>
-    function sender(href) {
-        console.log(href);
+    // function sender(href) {
+    //     console.log(href);
+    //     $.ajax({
+    //         type: 'post',
+    //         url: '/search/add',
+    //         data: {
+    //             href: href
+    //         }
+    //     })
+    // }
+
+    function sendHref(href) {
         $.ajax({
-            type: 'post',
-            url: '/search',
+            type: 'get',
+            url: '/add?href=' + href,
             data: {
                 href: href
-            },
-            success: alert("Успешно добавлено")
+            }
+        }).done(function (data) {
+            location.reload();
         })
     }
 
@@ -184,5 +180,9 @@
     }
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
 </body>
 </html>

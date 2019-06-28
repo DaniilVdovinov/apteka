@@ -2,15 +2,17 @@ package ru.itis.drugstore.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.itis.drugstore.forms.SignUpForm;
 import ru.itis.drugstore.models.User;
 import ru.itis.drugstore.models.UserState;
 import ru.itis.drugstore.repositories.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.UUID;
 
-@Component
+@Service
+@Transactional
 public class UserService{
     @Autowired
     private UserRepository userRepository;
@@ -41,23 +43,4 @@ public class UserService{
         emailService.sendMail("Подтвреждение регистрации", text, user.getEmail());
 
     }
-
-
-//    public void updateProfile(User user, String password, String email) {
-//        String userEmail = user.getEmail();
-//
-//        boolean isEmailChanged = (email != null && !email.equals(userEmail)) ||
-//                (userEmail != null && !userEmail.equals(email));
-//
-//        if (isEmailChanged) {
-//            user.setEmail(email);
-//        }
-//
-//        if (!StringUtils.isEmpty(password)) {
-//            user.setPassword(password);
-//        }
-//
-//        userRepository.save(user);
-//    }
-
 }

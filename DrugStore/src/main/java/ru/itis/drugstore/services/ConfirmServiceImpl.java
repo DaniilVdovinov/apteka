@@ -6,9 +6,11 @@ import ru.itis.drugstore.models.User;
 import ru.itis.drugstore.models.UserState;
 import ru.itis.drugstore.repositories.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class ConfirmServiceImpl implements ConfirmService {
     @Autowired
     private UserRepository usersRepository;

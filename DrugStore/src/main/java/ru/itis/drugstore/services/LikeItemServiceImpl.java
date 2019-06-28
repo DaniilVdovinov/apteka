@@ -1,16 +1,16 @@
 package ru.itis.drugstore.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.itis.drugstore.models.LikeItem;
 import ru.itis.drugstore.models.User;
 import ru.itis.drugstore.repositories.LikeItemRepository;
 
-//import javax.persistence.EntityManager;
-//import javax.persistence.Persistence;
+import javax.transaction.Transactional;
 import java.util.List;
 
-@Component
+@Service
+@Transactional
 public class LikeItemServiceImpl implements LikeItemService {
     @Autowired
     private LikeItemRepository likeItemRepository;

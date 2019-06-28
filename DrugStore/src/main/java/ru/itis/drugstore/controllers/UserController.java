@@ -5,21 +5,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import ru.itis.drugstore.config.UserDetailsImpl;
 import ru.itis.drugstore.models.LikeItem;
 import ru.itis.drugstore.models.User;
 import ru.itis.drugstore.services.LikeItemService;
-import ru.itis.drugstore.services.UserService;
 
 import java.util.List;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private LikeItemService likeItemService;
