@@ -1,0 +1,122 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #d5ebff;
+}
+
+.p {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 530px;
+    padding: 15px;
+    margin: auto;
+
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+    border-radius: 30px;
+}
+
+.form-signin .form__input {
+    position: relative;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    width: 500px;
+    height: 50px;
+    background-color: #E5E5E5;
+    overflow: visible;
+    border-radius: .25rem;
+}
+
+.form-signin .form__input:focus {
+    z-index: 2;
+}
+
+.form-signin .form__input :active, :hover, :focus {
+    outline-offset: 0;
+    outline: none;
+}
+
+.form_button {
+    background-color: #d5423b !important;
+    width: 340px !important;
+    height: 50px !important;
+    border: none !important;
+    border-radius: 10px;
+}
+
+input .form_button.-block {
+    text-align: center !important;
+}
+
+.form_button:focus:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+
+.form__group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form__group > input,
+.form__group > label {
+    height: 3.125rem;
+    padding: .75rem;
+}
+
+.form__group > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    pointer-events: none;
+    cursor: text; /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+    .form__group > label {
+        display: none;
+    }
+
+    .form__group input::-ms-input-placeholder {
+        color: #777;
+    }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .form__group > label {
+        display: none;
+    }
+
+    .form__group input:-ms-input-placeholder {
+        color: #777;
+    }
+}

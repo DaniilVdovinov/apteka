@@ -1,72 +1,187 @@
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="/home">
-        <img src="/docs/4.3.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
-             alt="">
-        drug.ru
-    </a>
-</nav>
 
-<div class="jumbotron jumbotron-fluid" style="background-color: #e3f2fd !important;margin: 20px">
-    <div class="container" style="margin: 30px">
-        <h3 class="text-center">Поиск лекарств</h3>
-        <form action="/search" method="get">
-            <input id="name" name="name" type="text" class="form-control" placeholder="Введите название">
-            <input class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="Поиск">
+<body onscroll="show('btn-up')">
+<nav class="navigation">
+    <img class="nav-img"
+         src='https://s8.hostingkartinok.com/uploads/images/2019/06/df320380ecdc2f42f71085655399e267.png'
+         alt='Logo.png'/>
+    <div class="login-out" style="right: 70px !important; top: 50px !important;">
+        <form action="/logout" method="post" style="display: inline; float: right; padding-left: 3px">
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button class="form-button" type="submit">Sign Out</button>
+        </form>
+        <form action="/profile" method="get" style="display: inline; float: right; padding-right: 3px">
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button class="form-button" type="submit">Профиль</button>
         </form>
     </div>
-</div>
+</nav>
 
-<#if error??>
-    <h4>Введите название лекарства и нажмите "Поиск"</h4>
-</#if>
-<div class="container">
-    <#if items??>
+<div class="searching-form">
+    <div class="search-container">
+        <#if items??>
+            <div id="map"></div>
+        </#if>
+        <form action="/search" method="get">
+            <input id="name" name="name" type="text" class="form-control" placeholder="Введите название лекарства...">
+            <input class="btn-search" type="submit" value="Поиск">
+        </form>
 
-    <div class="text-right">
-        <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle"
-                    data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                Цена по
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="/sort/sort">По возрастанию</a>
-                <a class="dropdown-item" href="/sort/reverse">По убыванию</a>
+        <div class="text-left">
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Цена по
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="/sort/sort">По возрастанию</a>
+                    <a class="dropdown-item" href="/sort/reverse">По убыванию</a>
+                </div>
             </div>
         </div>
     </div>
-    <table>
-        <#list items as item>
+</div>
+
+<a href="#" id="btn-up" title="Вернуться к началу" class="topbutton" style="display: none;">Наверх</a>
+
+<#if error??>
+</#if>
+<div class="container">
+    <#if items??>
+        <table>
+            <#list items as item>
             <div class="product-item">
-                <div class="row" style="margin: 0 0 20px 0;">
-                    <div class="col-3" style="padding: 0 0 0 80px;"><img src="${item.img}"
-                                                                         style="width: 100px; height: 100px; text-align: right">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="${item.img}" id="img">
                     </div>
-                    <div class="col-9" style="padding:30px">
+                    <div class="col-9">
                         <h3>${item.name}</h3>
                         <span class="price1">Стоимость: ${item.price} руб.</span>
                         <p><a href="${item.href}"> В аптеку</a></p>
                     </div>
+                    <div class="col-2">
+                        <input type="submit" aria-label="Favorite" id="${item.href}" name="${item.href}" onclick="sendHref(${item.href})" value="В избранное">
+                    </div>
+                    <hr width="700" color="#000000" size="1">
                 </div>
-            </div>
-        </#list>
-        </#if>
-    </table>
+                </#list>
+        </table>
+    </#if>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<style>
+    .form-button {
+        background-color: #c64d43 !important;
+        width: 120px !important;
+        height: 50px !important;
+        border-radius: 5px solid #c64d43;
+        color: white;
+    }
+
+    .btn-search {
+        float: left;
+        display: inline !important;
+        font-weight: 400;
+        margin-left: 6px !important;
+        color: #212529;
+        background-color: #e3f2fd;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        opacity: 50%;
+        border: 1px solid #87CEEB;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+    }
+
+    .btn-search:hover {
+        color: #000000;
+        background-color: rgba(168, 216, 255, .5);
+        border-color: #87CEEB;
+    }
+
+    .btn-search:focus {
+        box-shadow: 0 0 0 .2rem rgba(168, 216, 255, .5);
+    }
+
+    .search-container {
+        vertical-align: center;
+        margin: 30px;
+        display: inline-block;
+    }
+
+    .form-control {
+        display: inline;
+        float: left;
+        width: 547px;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+    }
+</style>
+
+<script>
+    // function sender(href) {
+    //     console.log(href);
+    //     $.ajax({
+    //         type: 'post',
+    //         url: '/search/add',
+    //         data: {
+    //             href: href
+    //         }
+    //     })
+    // }
+
+    function sendHref(href) {
+        $.ajax({
+            type: 'get',
+            url: '/add?href=' + href,
+            data: {
+                href: href
+            }
+        }).done(function (data) {
+            location.reload();
+        })
+    }
+
+    function show(id) {
+        elem = document.getElementById(id);
+        state = elem.style.display;
+        if (state === 'none') elem.style.display = '';
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=f2063206-fe46-4935-9921-9abf9987ebec&lang=ru_RU"
+        type="text/javascript"></script>
+<script src="../static/js/map/Map.js"></script>
+<script src="../static/js/map/AptekaRu.js"></script>
+<script src="../static/js/map/Rigla.js"></script>
+<script src="../static/js/map/Sakura.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

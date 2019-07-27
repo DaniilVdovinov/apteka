@@ -38,7 +38,7 @@ public class ZdravCityParser implements Parser{
             String href = element.getElementsByTag("a").get(0).attr("data-href");
             String img = "https://zdravcity.ru" + element.getElementsByTag("img").get(0).attr("src");
 
-            Item item = new Item(name.toUpperCase(), price, href, img);
+            Item item = new Item(name.toUpperCase(), Double.parseDouble(price), href, img);
             list.add(item);
         }
 

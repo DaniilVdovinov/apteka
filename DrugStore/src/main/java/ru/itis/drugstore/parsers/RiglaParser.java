@@ -31,8 +31,12 @@ public class RiglaParser implements Parser {
             String price = element.getElementsByClass("price").text();
             String href = "http://kazan.rigla.ru" + element.getElementsByTag("a").get(0).attr("href");
             String img = "http://kazan.rigla.ru" + element.getElementsByTag("img").attr("src");
+            price = price.replaceAll(" ","").replaceAll("р","").replace(',','.');
+            if(price.isEmpty()){
+                price = "0";
+            }
 
-            Item item = new Item(name.toUpperCase(), price.replaceAll(" ","").replaceAll("р",""), href, img);
+            Item item = new Item(name.toUpperCase(), Double.parseDouble(price), href, img);
             list.add(item);
         }
 
